@@ -102,7 +102,7 @@ def update_output_container(selected_statistics, input_year):
 
 # Plot 4 bar chart for the effect of unemployment rate on vehicle type and sale
         unemployment_effect= recession_data.groupby(['Vehicle_Type','unemployment_rate'])['Automobile_Sales'].mean().reset_index()
-        R_chart4  = dcc.Graph(figure=px.bar(unemployment_effect,x='unemployment_rate', y='Automobile_Sales',title="Effect of Unemployment Rate on Vehicle Type and Sales")
+        R_chart4  = dcc.Graph(figure=px.bar(unemployment_effect,x='unemployment_rate', y='Automobile_Sales',title="Effect of Unemployment Rate on Vehicle Type and Sales"))
 
 
         return [
@@ -130,11 +130,11 @@ def update_output_container(selected_statistics, input_year):
 
             # Plot bar chart for average number of vehicles sold during the given year
         avr_vdata=yearly_data.groupby('Year')['Automobile_Sales'].mean().reset_index()
-        Y_chart3 = dcc.Graph( figure=px.bar(data=yearly_data,x='Year',y='Automobile_Sales', title='Average Vehicles Sold by Vehicle Type in the year ').format(input_year))
+        Y_chart3 = dcc.Graph( figure=px.bar(yearly_data,x='Year',y='Automobile_Sales', title='Average Vehicles Sold by Vehicle Type in the year ').format(input_year))
 
             # Total Advertisement Expenditure for each vehicle using pie chart
         exp_data=yearly_data.groupby('Vehicle_Type')['Advertising_Expenditure'].sum().reset_index()
-        Y_chart4 = dcc.Graph(figure=px.pie(data=yearly_data,names='Vehicle_Type',title='Total Advertisement Expenditure for each vehicle'))
+        Y_chart4 = dcc.Graph(figure=px.pie(yearly_data,names='Vehicle_Type',title='Total Advertisement Expenditure for each vehicle'))
 
 #TASK 2.6: Returning the graphs for displaying Yearly data
         return [
